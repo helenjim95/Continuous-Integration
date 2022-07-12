@@ -1,11 +1,16 @@
 plugins {
     id 'application'
     id 'org.openjfx.javafxplugin' version '0.0.13'
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
 }
 
 sourceCompatibility = 17
 version = '1.0.0'
 compileJava.options.encoding = 'UTF-8'
+mainClassName = 'de.tum.in.ase.eist.App'
+jar.enabled = false
+build.dependsOn(shadowJar)
 
 repositories {
     mavenCentral()
@@ -13,6 +18,7 @@ repositories {
 
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
+    implementation 'org.apache.logging.log4j:log4j-core:2.18.0'
 }
 
 javafx {
@@ -32,6 +38,8 @@ sourceSets {
         }
     }
 }
+
+
 
 test {
     useJUnitPlatform()
